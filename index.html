@@ -161,11 +161,11 @@ function generarTexto() {
     	(convocatoria.includes("Proyectos Retos Colaboración") && (year>=2016) && (year<=2017)) ||
     	(convocatoria.includes("Proyectos Jóvenes Investigadores") && (year==2015)) ||
     	(convocatoria.includes("Proyectos Equipamiento Científico-Técnico") && ((year==2015)||(year==2018)||(year==2019)))) { 	
-        	textoGenerado += " and by ``ERDF A way of making Europe''";
+        	textoGenerado += " and by ERDF A way of making Europe";
 			linkLabel.href = "https://www.aei.gob.es/sites/default/files/inline-images/MICIU+FEDER+AEI.jpg";
     } else if ((convocatoria.includes("Proyectos Generación de Conocimiento") && (year>=2021) && (year<=2023)) ||
     		(convocatoria.includes("Proyectos Colaboración público-privada") && (year==2023))) {
-        textoGenerado += " and by ``ERDF/EU'' ";
+        textoGenerado += " and by ERDF/EU ";
 		linkLabel.href = "https://www.aei.gob.es/sites/default/files/inline-images/MICIU+Cofinanciado+AEI.jpg";
     } else if ((convocatoria.includes("Proyectos Líneas Estratégicas") && (year>=2021) && (year<=2022)) ||
     		(convocatoria.includes("Proyectos Transición Ecológica y Digital") && (year==2021)) ||
@@ -181,23 +181,23 @@ function generarTexto() {
     		(convocatoria.includes("Ayudas Ramón y Cajal") && (year==2021)) ||
     		(convocatoria.includes("Ayudas Consolidacion Investigadora") && (year>=2022) && (year<=2023)) ||
     		(convocatoria.includes("Ayudas Torres Quevedo") && (year==2020)) ) {
-        textoGenerado += " and by ``European Union NextGenerationEU/PRTR''";
+        textoGenerado += " and by European Union NextGenerationEU/PRTR";
 		linkLabel.href = "https://www.aei.gob.es/sites/default/files/inline-images/MICIU+NextG+PRTR+AEI.jpg";
     } else if ((convocatoria.includes("Proyectos Programación conjunta internacional") && (year>=2015) && (year<=2019)) ||
     		(convocatoria.includes("Proyectos Colaboración Internacional") && (year>=2023) && (year<=2024))) {
-        textoGenerado += " and by ``and by the ``European Union''";
+        textoGenerado += " and by and by the European Union";
 		linkLabel.href = "https://www.aei.gob.es/sites/default/files/inline-images/MICIU+Cofinanciado+AEI.jpg";
     } else if ((convocatoria.includes("Ayudas Contratos Predoctorales") && (year>=2016) && (year<=2020)) ||
     		(convocatoria.includes("Ayudas Ramón y Cajal") && (year>=2015) && (year<=2020)) ||
     		(convocatoria.includes("Ayudas Promoción de empleo joven") && ((year>=2014) || (year==2018)))) {
-        textoGenerado += " and by ``ESF Investing in your future''";
+        textoGenerado += " and by ESF Investing in your future";
 		linkLabel.href = "https://www.aei.gob.es/sites/default/files/inline-images/MICIU+FSE+AEI.jpg";
     } else if ((convocatoria.includes("Ayudas Contratos Predoctorales") && (year>=2021) && (year<=2022)) ||
     		(convocatoria.includes("Ayudas Formación de personal investigador predoctoral") && (year>=2022) && (year<=2023)) ||
     		(convocatoria.includes("Ayudas Juan de la Cierva") && (year==2023)) ||
     		(convocatoria.includes("Ayudas Ramón y Cajal") && (year>=2022) && (year<=2023)) ||
     		(convocatoria.includes("Ayudas Personal técnico de apoyo") && (year>=2021) && (year<=2023))) {
-        textoGenerado += " and by ``ESF+''";
+        textoGenerado += " and by ESF+";
 		linkLabel.href = "https://www.aei.gob.es/sites/default/files/inline-images/MICIU+Cofinanciado+AEI.jpg";
     }
 
