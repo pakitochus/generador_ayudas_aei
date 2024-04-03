@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Formulario de Ayuda</title>
+<style>
+    label {
+        display: block;
+        margin-bottom: 10px;
+    }
+</style>
+</head>
+<body>
+<form id="formularioAyuda">
+    <label for="referencia">Referencia de la ayuda:</label>
+    <input type="text" id="referencia" name="referencia" required><br>
+    
+    <label for="convocatoria">Convocatoria:</label>
+    <select id="convocatoria" name="convocatoria" onchange="actualizarTipoAyuda()" required>
+	    <option value="Proyectos Retos Investigación">Proyectos I+D+i - Modalidad «Retos Investigación»</option>
+	    <option value="Proyectos Excelencia">Proyectos I+D+i - Modalidad «Excelencia»</option>
+	    <option value="Proyectos Generación de Conocimiento">Proyectos I+D+i - Modalidad «Generación de Conocimiento»</option>
+	    <option value="Proyectos Investigacion No Orientada">Proyectos I+D+i - Modalidad «Investigación no orientada»</option>
+	    <option value="Proyectos Investigacion Orientada">Proyectos I+D+i - Modalidad «Investigación orientada»</option>
+	    <option value="Proyectos Pruebas Concepto">Proyectos I+D+i para la realización de «Pruebas de Concepto»</option>
+	    <option value="Proyectos Líneas Estratégicas">Proyectos I+D+i en «Líneas Estratégicas»</option>
+	    <option value="Proyectos Transición Ecológica y Digital">Proyectos Estratégicos Orientados a la «Transición Ecológica y a la Transición Digital»</option>
+	    <option value="Proyectos Retos Colaboración">Proyectos de I+D+I «Retos Colaboración»</option>
+	    <option value="Proyectos Colaboración público-privada">Proyectos de Colaboración público-privada</option>
+	    <option value="Proyectos Jóvenes Investigadores">Proyectos de I+D+I para «Jóvenes Investigadores»</option>
+	    <option value="Proyectos Explora Ciencia y Tecnología">Proyectos «Explora Ciencia» y «Explora Tecnología»</option>
+	    <option value="Proyectos Programación conjunta internacional">Proyectos I+D+I y Acciones de «Programación conjunta internacional»</option>
+	    <option value="Proyectos Colaboración Internacional">Proyectos de Colaboración Internacional</option>
+	    <option value="Proyectos Equipamiento Científico-Técnico">Ayudas para la adquisición de Equipamiento Científico-Técnico</option>
+	    <option value="Proyectos Europa Excelencia">Acciones de Dinamización/Proyectos «Europa Excelencia»</option>
+	    <option value="Proyectos Europa Investigación">Acciones de Dinamización «Europa Investigación»</option>
+	    <option value="Proyectos Europa Redes y Gestores">Europa Redes y Gestores - Europa Centros Tecnológicos</option>
+	    <option value="Proyectos Preparación Europeos">Preparación y gestión de proyectos europeos</option>
+	    <option value="Proyectos Plataformas tecnológicas y de innovación">Ayudas a Plataformas tecnológicas y de innovación</option>
+	    <option value="Proyectos Redes excelencia y Redes investigación">Acciones de Dinamización «Redes excelencia» y «Redes investigación»</option>
+	    <option value="Proyectos Centros de Excelencia y Unidades de Excelencia">Centros de Excelencia «Severo Ochoa» y Unidades de Excelencia «María de Maeztu»</option>
+	    <option value="Ayudas Contratos Predoctorales">Ayudas para contratos Predoctorales</option>
+	    <option value="Ayudas Formación de personal investigador predoctoral">Actuaciones para la formación de personal investigador predoctoral asociadas a los Proyectos de «Generación de Conocimiento»</option>
+	    <option value="Ayudas Doctorados industriales">Ayudas para contratos para Doctorados industriales</option>
+	    <option value="Ayudas Juan de la Cierva">Ayudas para contratos Juan de la Cierva</option>
+	    <option value="Ayudas Juan de la Cierva Formación">Ayudas para contratos Juan de la Cierva Formación (incluidos posdoctorales)</option>
+	    <option value="Ayudas Juan de la Cierva Incorporación">Ayudas para contratos Juan de la Cierva Incorporación</option>
+	    <option value="Ayudas Ramón y Cajal">Ayudas para contratos Ramón y Cajal</option>
+	    <option value="Ayudas Incorporación estable de doctores">Ayudas para incentivar la incorporación estable de doctores</option>
+	    <option value="Ayudas Personal técnico de apoyo">Ayudas para contratos de Personal técnico de apoyo</option>
+	    <option value="Ayudas Incentivos a la contratación de tecnólogos">Ayudas e incentivos a la contratación de tecnólogos, titulados universitarios, y graduados superiores en formación profesional, para el desarrollo de actividades de apoyo técnico y soporte a la I+D+I (EMPLEA)</option>
+	    <option value="Ayudas Promoción de empleo joven">Ayudas para la Promoción de empleo joven</option>
+	    <option value="Ayudas Torres Quevedo">Ayudas para contratos Torres Quevedo</option>
+	    <option value="Ayudas Consolidacion Investigadora">Ayudas para incentivar la Consolidación Investigadora</option>
+	    <option value="Ayudas Incorporación de talento consolidado">Ayudas para la incorporación de talento consolidado – Programa ATRAE</option>
+    </select><br>
+    
+	<label for="año">Año:</label>
+	<select id="año" name="año" required onchange="generarTexto()">
+	    <option value="2008">2008</option>
+	    <option value="2009">2009</option>
+	    <option value="2010">2010</option>
+	    <option value="2011">2011</option>
+	    <option value="2012">2012</option>
+	    <option value="2013">2013</option>
+	    <option value="2014">2014</option>
+	    <option value="2015">2015</option>
+	    <option value="2016">2016</option>
+	    <option value="2017">2017</option>
+	    <option value="2018">2018</option>
+	    <option value="2019">2019</option>
+	    <option value="2020">2020</option>
+	    <option value="2021">2021</option>
+	    <option value="2022">2022</option>
+	    <option value="2023">2023</option>
+	</select><br>
+    
+    <label for="tipoResultado">Tipo de Resultado:</label>
+    <select id="tipoResultado" name="tipoResultado" required onchange="generarTexto()">
+        <option value="publication">Publication</option>
+        <option value="result">Result</option>
+        <option value="equipment">Equipment</option>
+        <option value="video">Video</option>
+        <option value="activity">Activity</option>
+        <option value="contract">Contract</option>
+        <option value="otros">Otros</option>
+    </select>
+    <input type="text" id="campoOtros" name="campoOtros" style="display: none;"><br>
+    
+    <input type="hidden" id="tipoAyuda" name="tipoAyuda" value="Project">
+    
+    <label for="tick">Tick (Versión Larga):</label>
+    <input type="checkbox" id="tick" name="tick" onchange="generarTexto()"><br>
+    
+    <button type="button" onclick="generarTexto()">Generar Texto</button>
+    
+    <br><br>
+    
+    <label for="textoGenerado">Texto Generado:</label>
+    <textarea id="textoGenerado" rows="4" cols="50" readonly></textarea>
+	<a id="linkLabel" href="https://www.aei.gob.es/sites/default/files/inline-images/MICIU+AEI.jpg" target="_blank">ENLACE ETIQUETA</a>
+</form>
+
+<script>
+function mostrarCampoOtros() {
+    var tipoResultado = document.getElementById("tipoResultado");
+    var campoOtros = document.getElementById("campoOtros");
+    if (tipoResultado.value === "otros") {
+        campoOtros.style.display = "block";
+    } else {
+        campoOtros.style.display = "none";
+    }
+}
+
+function actualizarTipoAyuda() {
+    var convocatoria = document.getElementById("convocatoria").value;
+    var tipoAyuda = document.getElementById("tipoAyuda");
+
+    if (convocatoria.toLowerCase().includes("proyectos") ) {
+        tipoAyuda.value = "Project";
+    } else {
+        tipoAyuda.value = "Grant";
+    }
+	generarTexto()
+}
+
+function generarTexto() {
+    var convocatoria = document.getElementById("convocatoria").value;
+    var year = document.getElementById("año").value; 
+    var referencia = document.getElementById("referencia").value;
+    var tipoResultado = document.getElementById("tipoResultado").value;
+    var tipoAyuda = document.getElementById("tipoAyuda").value;
+    var textoGenerado = "";
+    var linkLabel = document.getElementById("linkLabel");
+
+    if (document.getElementById("tick").checked) {
+        textoGenerado += "This " + tipoResultado + " is part of the " + tipoAyuda.toLowerCase() + " " + referencia + " funded by MICIU/AEI/10.13039/501100011033";
+    } else {
+        textoGenerado += tipoAyuda + " " + referencia + " funded by MICIU/AEI/10.13039/501100011033";
+    }
+    
+    // Agregar casos específicos
+    if ((convocatoria.includes("Proyectos Retos Investigación") && (year>=2015) && (year<=2018)) || 
+    	(convocatoria.includes("Proyectos Excelencia") && (year>=2015) && (year<=2018)) ||
+    	(convocatoria.includes("Proyectos Generación de Conocimiento") && (year>=2015) && (year<=2018)) ||
+    	(convocatoria.includes("Proyectos Investigacion No Orientada") && (year>=2015) && (year<=2018)) ||
+    	(convocatoria.includes("Proyectos Investigacion Orientada") && (year>=2015) && (year<=2018)) ||
+    	(convocatoria.includes("Proyectos Retos Colaboración") && (year>=2016) && (year<=2017)) ||
+    	(convocatoria.includes("Proyectos Jóvenes Investigadores") && (year==2015)) ||
+    	(convocatoria.includes("Proyectos Equipamiento Científico-Técnico") && ((year==2015)||(year==2018)||(year==2019)))) { 	
+        	textoGenerado += " and by ``ERDF A way of making Europe''";
+			linkLabel.href = "https://www.aei.gob.es/sites/default/files/inline-images/MICIU+FEDER+AEI.jpg";
+    } else if ((convocatoria.includes("Proyectos Generación de Conocimiento") && (year>=2021) && (year<=2023)) ||
+    		(convocatoria.includes("Proyectos Colaboración público-privada") && (year==2023))) {
+        textoGenerado += " and by ``ERDF/EU'' ";
+    } else if ((convocatoria.includes("Proyectos Líneas Estratégicas") && (year>=2021) && (year<=2022)) ||
+    		(convocatoria.includes("Proyectos Transición Ecológica y Digital") && (year==2021)) ||
+    		(convocatoria.includes("Proyectos Colaboración público-privada") && (year>=2021) && (year<=2022)) ||
+    		(convocatoria.includes("Proyectos Programación conjunta internacional") && (year>=2020) && (year<=2021)) ||
+    		(convocatoria.includes("Proyectos Colaboración Internacional") && (year>=2021) && (year<=2022)) ||
+    		(convocatoria.includes("Proyectos Equipamiento Científico-Técnico") && (year==2021)) ||
+    		(convocatoria.includes("Proyectos Europa Excelencia") && ((year==2020) || (year==2022) || (year==2023))) ||
+    		(convocatoria.includes("Proyectos Europa Investigación") && (year==2020)) ||
+    		(convocatoria.includes("Proyectos Europa Redes y Gestores") && (year==2020)) ||
+    		(convocatoria.includes("Ayudas Doctorados industriales") && (year==2020)) ||
+    		(convocatoria.includes("Ayudas Juan de la Cierva") && (year>=2020) && (year<=2022)) ||
+    		(convocatoria.includes("Ayudas Ramón y Cajal") && (year==2021)) ||
+    		(convocatoria.includes("Ayudas Consolidacion Investigadora") && (year>=2022) && (year<=2023)) ||
+    		(convocatoria.includes("Ayudas Torres Quevedo") && (year==2020)) ) {
+        textoGenerado += " and by ``European Union NextGenerationEU/PRTR''";
+    } else if ((convocatoria.includes("Proyectos Programación conjunta internacional") && (year>=2015) && (year<=2019)) ||
+    		(convocatoria.includes("Proyectos Colaboración Internacional") && (year>=2023) && (year<=2024))) {
+        textoGenerado += " and by ``and by the ``European Union''";
+    } else if ((convocatoria.includes("Ayudas Contratos Predoctorales") && (year>=2016) && (year<=2020)) ||
+    		(convocatoria.includes("Ayudas Ramón y Cajal") && (year>=2015) && (year<=2020)) ||
+    		(convocatoria.includes("Ayudas Promoción de empleo joven") && ((year>=2014) || (year==2018)))) {
+        textoGenerado += " and by ``ESF Investing in your future''";
+    } else if ((convocatoria.includes("Ayudas Contratos Predoctorales") && (year>=2021) && (year<=2022)) ||
+    		(convocatoria.includes("Ayudas Formación de personal investigador predoctoral") && (year>=2022) && (year<=2023)) ||
+    		(convocatoria.includes("Ayudas Juan de la Cierva") && (year==2023)) ||
+    		(convocatoria.includes("Ayudas Ramón y Cajal") && (year>=2022) && (year<=2023)) ||
+    		(convocatoria.includes("Ayudas Personal técnico de apoyo") && (year>=2021) && (year<=2023))) {
+        textoGenerado += " and by ``ESF+''";
+    }
+
+    document.getElementById("textoGenerado").value = textoGenerado;
+}
+</script>
+</body>
+</html>
+

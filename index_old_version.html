@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Formulario de Ayuda</title>
+<style>
+    label {
+        display: block;
+        margin-bottom: 10px;
+    }
+</style>
+</head>
+<body>
+<form id="formularioAyuda">
+    <label for="referencia">Referencia de la ayuda:</label>
+    <input type="text" id="referencia" name="referencia" required><br>
+    
+	<label for="convocatoria">Convocatoria:</label>
+    	<select id="convocatoria" name="convocatoria" onchange="actualizarTipoAyuda()" required>
+	    <option value="Retos Investigación">Proyectos I+D+i - Modalidades «Retos Investigación», «Excelencia», «Generación de Conocimiento», «Investigación no orientada» e «Investigación orientada»</option>
+	    <option value="Pruebas de Concepto">Proyectos I+D+i para la realización de «Pruebas de Concepto»</option>
+	    <option value="Líneas Estratégicas">Proyectos I+D+i en «Líneas Estratégicas»</option>
+	    <option value="Transición Ecológica y Digital">Proyectos Estratégicos Orientados a la «Transición Ecológica y a la Transición Digital»</option>
+	    <option value="Retos Colaboración">Proyectos de I+D+I «Retos Colaboración»</option>
+	    <option value="Colaboración público-privada">Proyectos de Colaboración público-privada</option>
+	    <option value="Jóvenes Investigadores">Proyectos de I+D+I para «Jóvenes Investigadores»</option>
+	    <option value="Explora Ciencia y Tecnología">Proyectos «Explora Ciencia» y «Explora Tecnología»</option>
+	    <option value="Programación conjunta internacional">Proyectos I+D+I y Acciones de «Programación conjunta internacional»</option>
+	    <option value="Colaboración Internacional">Proyectos de Colaboración Internacional</option>
+	    <option value="Equipamiento Científico-Técnico">Ayudas para la adquisición de Equipamiento Científico-Técnico</option>
+	    <option value="Europa Excelencia">Acciones de Dinamización/Proyectos «Europa Excelencia»</option>
+	    <option value="Europa Investigación">Acciones de Dinamización «Europa Investigación»</option>
+	    <option value="Europa Redes y Gestores">Europa Redes y Gestores - Europa Centros Tecnológicos</option>
+	    <option value="Proyectos europeos">Preparación y gestión de proyectos europeos</option>
+	    <option value="Plataformas tecnológicas y de innovación">Ayudas a Plataformas tecnológicas y de innovación</option>
+	    <option value="Redes excelencia y Redes investigación">Acciones de Dinamización «Redes excelencia» y «Redes investigación»</option>
+	    <option value="Centros de Excelencia y Unidades de Excelencia">Centros de Excelencia «Severo Ochoa» y Unidades de Excelencia «María de Maeztu»</option>
+	    <option value="Contratos Predoctorales">Ayudas para contratos Predoctorales</option>
+	    <option value="Formación de personal investigador predoctoral">Actuaciones para la formación de personal investigador predoctoral asociadas a los Proyectos de «Generación de Conocimiento»</option>
+	    <option value="Doctorados industriales">Ayudas para contratos para Doctorados industriales</option>
+	    <option value="Juan de la Cierva">Ayudas para contratos Juan de la Cierva</option>
+	    <option value="Juan de la Cierva Formación">Ayudas para contratos Juan de la Cierva Formación (incluidos posdoctorales)</option>
+	    <option value="Juan de la Cierva Incorporación">Ayudas para contratos Juan de la Cierva Incorporación</option>
+	    <option value="Ramón y Cajal">Ayudas para contratos Ramón y Cajal</option>
+	    <option value="Incorporación estable de doctores">Ayudas para incentivar la incorporación estable de doctores</option>
+	    <option value="Personal técnico de apoyo">Ayudas para contratos de Personal técnico de apoyo</option>
+	    <option value="Incentivos a la contratación de tecnólogos">Ayudas e incentivos a la contratación de tecnólogos, titulados universitarios, y graduados superiores en formación profesional, para el desarrollo de actividades de apoyo técnico y soporte a la I+D+I (EMPLEA)</option>
+	    <option value="Promoción de empleo joven">Ayudas para la Promoción de empleo joven</option>
+	    <option value="Torres Quevedo">Ayudas para contratos Torres Quevedo</option>
+	    <option value="Incorporación de talento consolidado">Ayudas para la incorporación de talento consolidado – Programa ATRAE</option>
+	</select><br>
+    
+	<label for="año">Año:</label>
+	<select id="año" name="año" required>
+	    <option value="2008">2008</option>
+	    <option value="2009">2009</option>
+	    <option value="2010">2010</option>
+	    <option value="2011">2011</option>
+	    <option value="2012">2012</option>
+	    <option value="2013">2013</option>
+	    <option value="2014">2014</option>
+	    <option value="2015">2015</option>
+	    <option value="2016">2016</option>
+	    <option value="2017">2017</option>
+	    <option value="2018">2018</option>
+	    <option value="2019">2019</option>
+	    <option value="2020">2020</option>
+	    <option value="2021">2021</option>
+	    <option value="2022">2022</option>
+	    <option value="2023">2023</option>
+	</select><br>
+
+    
+    <label for="tipoResultado">Tipo de Resultado:</label>
+    <select id="tipoResultado" name="tipoResultado" required>
+        <option value="publication">Publication</option>
+        <option value="result">Result</option>
+        <option value="equipment">Equipment</option>
+        <option value="video">Video</option>
+        <option value="activity">Activity</option>
+        <option value="contract">Contract</option>
+        <option value="otros">Otros</option>
+    </select>
+    <input type="text" id="campoOtros" name="campoOtros" style="display: none;"><br>
+    
+    <input type="hidden" id="tipoAyuda" name="tipoAyuda"></input>
+    
+    <label for="tick">Versión Larga:</label>
+    <input type="checkbox" id="tick" name="tick"><br>
+    
+    <button type="button" onclick="generarTexto()">Generar Texto</button><br>
+    
+    <textarea id="textoGenerado" name="textoGenerado" rows="4" cols="50" readonly>Texto acknowledgements...</textarea><br>
+</form>
+
+<script>
+function mostrarCampoOtros() {
+    var tipoAyuda = document.getElementById("tipoAyuda");
+    var campoOtros = document.getElementById("campoOtros");
+    if (tipoAyuda.value === "otros") {
+        campoOtros.style.display = "block";
+    } else {
+        campoOtros.style.display = "none";
+    }
+}
+
+function actualizarTipoAyuda() {
+    var convocatoria = document.getElementById("convocatoria").value;
+    var tipoAyuda = document.getElementById("tipoAyuda");
+
+    if (convocatoria.toLowerCase().includes("proyectos")) {
+        tipoAyuda.value = "project";
+    } else {
+        tipoAyuda.value = "grant";
+    }
+    if convocatoria.includes("
+}
+
+function generarTexto() {
+    var referencia = document.getElementById("referencia").value;
+    var tipoResultado = document.getElementById("tipoResultado").value;
+    var tipoAyuda = document.getElementById("tipoAyuda").value;
+    var textoGenerado = "";
+
+    if (document.getElementById("tick").checked) {
+        textoGenerado += "This " + tipoResultado + " is part of the [" + tipoAyuda + "] " + referencia + " funded by MICIU/AEI/10.13039/501100011033";
+    } else {
+        textoGenerado += tipoResultado + " " + referencia + " funded by MICIU/AEI/10.13039/501100011033";
+    }
+
+    document.getElementById("textoGenerado").value = textoGenerado;
+}
+</script>
+</body>
+</html>
