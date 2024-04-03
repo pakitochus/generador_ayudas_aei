@@ -12,6 +12,13 @@
 </style>
 <!-- Minified version -->
 <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
+<style>
+	#my-canvas {
+  		background: rgb(255, 255, 255);
+		width: 100%;
+		height: 300px;
+	}
+</style>
 </head>
 <body>
 	<header><h1>ACKS de la Agencia Estatal de Investigación</h1>
@@ -107,6 +114,11 @@
     
     <label for="textoGenerado">Texto Generado:</label>
     <textarea id="textoGenerado" rows="4" cols="50" readonly></textarea> <br>
+
+	<p>Etiqueta: </p>
+	<article id="outputContainer" >
+		<canvas id="my-canvas"></canvas>
+	</article>
 	<a  class="button" id="linkLabel" href="https://www.aei.gob.es/sites/default/files/inline-images/MICIU+AEI.jpg" target="_blank">ENLACE ETIQUETA</a>
 </form>
 
@@ -137,6 +149,26 @@ function actualizarTipoAyuda() {
 	generarTexto()
 }
 
+
+function fitToContainer(canvas){
+  // Make it visually fill the positioned parent
+  canvas.style.width ='100%';
+  canvas.style.height='100%';
+  // ...then set the internal size to match
+  canvas.width  = canvas.offsetWidth;
+  canvas.height = canvas.offsetHeight;
+}
+
+function calculateAspectRatioFit(srcWidth, srcHeight, maxWidth, maxHeight) {
+    var ratio = Math.min(maxWidth / srcWidth, maxHeight / srcHeight);
+    var rtnWidth = srcWidth * ratio;
+    var rtnHeight = srcHeight * ratio;
+    return {
+        width: rtnWidth,
+        height: rtnHeight
+    };
+}
+
 function generarTexto() {
     var convocatoria = document.getElementById("convocatoria").value;
     var year = document.getElementById("año").value; 
@@ -145,12 +177,25 @@ function generarTexto() {
     var tipoAyuda = document.getElementById("tipoAyuda").value;
     var textoGenerado = "";
     var linkLabel = document.getElementById("linkLabel");
+	var labelIMG = document.getElementById("labelIMG");
 
     if (document.getElementById("tick").checked) {
-        textoGenerado += "This " + tipoResultado + " is part of the " + tipoAyuda.toLowerCase() + " " + referencia + " funded by MICIU/AEI/10.13039/501100011033";
+        textoGenerado += "This " + tipoResultado + " is part of the " + tipoAyuda.toLowerCase() + " " + referencia + " funded by";
     } else {
-        textoGenerado += tipoAyuda + " " + referencia + " funded by MICIU/AEI/10.13039/501100011033";
+        textoGenerado += tipoAyuda + " " + referencia + " funded by";
     }
+
+	var canvas = document.getElementById("my-canvas");
+
+	fitToContainer(canvas);
+	var context = canvas.getContext("2d");
+	context.clearRect(0, 0, canvas.width, canvas.height);
+	context.font = "16px Arial";
+	context.textAlign = 'left';
+	context.textBaseline = 'top';
+	context.fillText(textoGenerado+":", (5), (5));
+
+	textoGenerado += " MICIU/AEI/10.13039/501100011033";
     
     // Agregar casos específicos
     if ((convocatoria.includes("Proyectos Retos Investigación") && (year>=2015) && (year<=2018)) || 
@@ -163,6 +208,7 @@ function generarTexto() {
     	(convocatoria.includes("Proyectos Equipamiento Científico-Técnico") && ((year==2015)||(year==2018)||(year==2019)))) { 	
         	textoGenerado += " and by ERDF A way of making Europe";
 			linkLabel.href = "https://www.aei.gob.es/sites/default/files/inline-images/MICIU+FEDER+AEI.jpg";
+			labelIMG.src = "https://www.aei.gob.es/sites/default/files/inline-images/MICIU+FEDER+AEI.jpg";
     } else if ((convocatoria.includes("Proyectos Generación de Conocimiento") && (year>=2021) && (year<=2023)) ||
     		(convocatoria.includes("Proyectos Colaboración público-privada") && (year==2023))) {
         textoGenerado += " and by ERDF/EU ";
@@ -202,6 +248,17 @@ function generarTexto() {
     }
 
     document.getElementById("textoGenerado").value = textoGenerado;
+	make_base();
+
+	function make_base()
+		{
+		base_image = new Image();
+		base_image.src = linkLabel.href;
+		var imgSize = calculateAspectRatioFit(base_image.width, base_image.height, canvas.clientWidth, canvas.clientHeight);
+		base_image.onload = function(){
+			context.drawImage(base_image, 4, 21, imgSize.width-8, imgSize.height);
+		}
+	}
 }
 </script>
 <footer>
