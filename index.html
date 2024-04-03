@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Formulario de Ayuda</title>
+<title>Formulario para generar ACKS de AEI</title>
 <style>
     label {
         display: block;
@@ -12,6 +12,10 @@
 </style>
 </head>
 <body>
+	<header><h1>Formulario para generar ACKS de la Agencia Estatal de Investigación</h1>
+		<p>Solo hay que seleccionar los diferentes campos. En próximas actualizaciones intentaré hacer la lógica para combinar varias ayudas.</p>
+	</header>
+
 <form id="formularioAyuda">
     <label for="referencia">Referencia de la ayuda:</label>
     <input type="text" id="referencia" name="referencia" required><br>
@@ -187,6 +191,9 @@ function generarTexto() {
     document.getElementById("textoGenerado").value = textoGenerado;
 }
 </script>
+<footer>
+	<p>2024 Formulario desarrollado por <a href="https://github.com/pakitochus/">pakitochus</a></p>
+</footer>
 </body>
 </html>
 
