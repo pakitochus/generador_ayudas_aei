@@ -1,4 +1,4 @@
-# Generador de ayudas de la AEI
+# Generador de texto de publicidad para ayudas de la AEI
 
 ## Description
 
