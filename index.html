@@ -10,12 +10,16 @@
         margin-bottom: 10px;
     }
 </style>
+<!-- Minified version -->
+<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
 </head>
 <body>
-	<header><h1>Formulario para generar ACKS de la Agencia Estatal de Investigación</h1>
-		<p>Solo hay que seleccionar los diferentes campos. En próximas actualizaciones intentaré hacer la lógica para combinar varias ayudas.</p>
+	<header><h1>ACKS de la Agencia Estatal de Investigación</h1>
+		
 	</header>
-
+<article>
+	<h2>Formulario generador</h2>
+	<p>Solo hay que seleccionar los diferentes campos. En próximas actualizaciones intentaré hacer la lógica para combinar varias ayudas.</p>
 <form id="formularioAyuda">
     <label for="referencia">Referencia de la ayuda:</label>
     <input type="text" id="referencia" name="referencia" required><br>
@@ -94,17 +98,20 @@
     
     <input type="hidden" id="tipoAyuda" name="tipoAyuda" value="Project">
     
-    <label for="tick">Tick (Versión Larga):</label>
-    <input type="checkbox" id="tick" name="tick" onchange="generarTexto()"><br>
+    <label for="tick"><input type="checkbox" id="tick" name="tick" onchange="generarTexto()"> Versión Larga</label>
+    <br>
     
     <button type="button" onclick="generarTexto()">Generar Texto</button>
     
     <br><br>
     
     <label for="textoGenerado">Texto Generado:</label>
-    <textarea id="textoGenerado" rows="4" cols="50" readonly></textarea>
-	<a id="linkLabel" href="https://www.aei.gob.es/sites/default/files/inline-images/MICIU+AEI.jpg" target="_blank">ENLACE ETIQUETA</a>
+    <textarea id="textoGenerado" rows="4" cols="50" readonly></textarea> <br>
+	<a  class="button" id="linkLabel" href="https://www.aei.gob.es/sites/default/files/inline-images/MICIU+AEI.jpg" target="_blank">ENLACE ETIQUETA</a>
 </form>
+
+<p>Fuente: <a href="https://www.aei.gob.es/sites/default/files/inline-files/20240301_Instrucciones-comunicacion-publicidad-ayudas%20OK.pdf">web de la AEI</a></p>
+</article>
 
 <script>
 function mostrarCampoOtros() {
