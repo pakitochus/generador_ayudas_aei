@@ -121,6 +121,7 @@
 		<canvas id="my-canvas"></canvas>
 	</article>
 	<a class="button" id="linkLabel" href="https://www.aei.gob.es/sites/default/files/inline-images/MICIU+AEI.jpg" target="_blank">ENLACE ETIQUETA</a>
+    <button type="button" onclick="downloadCanvas()">Descargar Imagen</button>
 </form>
 
 <p>Fuente: <a href="https://www.aei.gob.es/sites/default/files/inline-files/20240924_Guia%20comunicacion%20publicidad%20ayudas_v02.pdf">web de la AEI</a>. <strong>Actualizado 9 octubre de 2024.</strong></p>
@@ -328,10 +329,18 @@ function generarTexto() {
         // }
     }
 }
+
+function downloadCanvas() {
+    var canvas = document.getElementById("my-canvas");
+    var image = canvas.toDataURL("image/jpeg");
+    var link = document.createElement('a');
+    link.download = "canvas_image.jpg";
+    link.href = image;
+    link.click();
+}
 </script>
 <footer>
 	<p>2024 Formulario desarrollado por <a href="https://github.com/pakitochus/">pakitochus</a>. Licencia <a href="https://choosealicense.com/licenses/mit/">MIT</a>. CSS by <a href="https://simplecss.org/">SimpleCSS</a></p>
 </footer>
 </body>
 </html>
-
