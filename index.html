@@ -10,6 +10,8 @@
         margin-bottom: 10px;
     }
 </style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
 <!-- Minified version -->
 <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
 <style>
@@ -109,7 +111,7 @@
     <label for="tick"><input type="checkbox" id="tick" name="tick" onchange="generarTexto()"> Versión Larga</label>
     <br>
     
-    <button type="button" onclick="generarTexto()">Generar Texto</button>
+    <button type="button" onclick="generarTexto()"><i class="fas fa-cog"></i> Generar Texto</button>
     
     <br><br>
     
@@ -120,8 +122,8 @@
 	<article id="outputContainer" >
 		<canvas id="my-canvas"></canvas>
 	</article>
-	<a class="button" id="linkLabel" href="https://www.aei.gob.es/sites/default/files/inline-images/MICIU+AEI.jpg" target="_blank">ENLACE ETIQUETA</a>
-    <button type="button" onclick="downloadCanvas()">Descargar Imagen</button>
+    <button type="button" onclick="downloadCanvas()"><i class="fas fa-download"></i> Descargar Etiqueta con Texto</button>
+	<a class="button" id="linkLabel" href="https://www.aei.gob.es/sites/default/files/inline-images/MICIU+AEI.jpg" target="_blank"><i class="fas fa-external-link-alt"></i> Ir a Etiqueta Original (HD)</a>
 </form>
 
 <p>Fuente: <a href="https://www.aei.gob.es/sites/default/files/inline-files/20240924_Guia%20comunicacion%20publicidad%20ayudas_v02.pdf">web de la AEI</a>. <strong>Actualizado 9 octubre de 2024.</strong></p>
