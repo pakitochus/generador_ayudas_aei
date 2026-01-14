@@ -12,7 +12,6 @@
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-<!-- Minified version -->
 <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
 <style>
 	#my-canvas {
@@ -42,6 +41,7 @@
 	    <option value="Proyectos Investigacion Orientada">Proyectos I+D+i - Modalidad «Investigación orientada»</option>
 	    <option value="Proyectos Pruebas Concepto">Proyectos I+D+i para la realización de «Pruebas de Concepto»</option>
 	    <option value="Proyectos Líneas Estratégicas">Proyectos I+D+i en «Líneas Estratégicas»</option>
+        <option value="Proyectos Líneas Estratégicas Transmisiones">Proyectos I+D+i en «Líneas Estratégicas» - Transmisiones</option>
 	    <option value="Proyectos Transición Ecológica y Digital">Proyectos Estratégicos Orientados a la «Transición Ecológica y a la Transición Digital»</option>
 	    <option value="Proyectos Retos Colaboración">Proyectos de I+D+I «Retos Colaboración»</option>
 	    <option value="Proyectos Colaboración público-privada">Proyectos de Colaboración público-privada</option>
@@ -70,7 +70,7 @@
 	    <option value="Ayudas Promoción de empleo joven">Ayudas para la Promoción de empleo joven</option>
 	    <option value="Ayudas Torres Quevedo">Ayudas para contratos Torres Quevedo</option>
 	    <option value="Ayudas Consolidacion Investigadora">Ayudas para incentivar la Consolidación Investigadora</option>
-	    <option value="Ayudas Incorporación de talento consolidado">Ayudas para la incorporación de talento consolidado – Programa ATRAE</option>
+        <option value="Ayudas Incorporación de talento consolidado">Ayudas para la incorporación de talento consolidado – Programa ATRAE</option>
     </select><br>
     
 	<label for="año">Año:</label>
@@ -92,6 +92,7 @@
 	    <option value="2022">2022</option>
 	    <option value="2023">2023</option>
 	    <option value="2024">2024</option>
+        <option value="2025">2025</option>
 	</select><br>
     
     <label for="tipoResultado">Tipo de Resultado:</label>
@@ -125,10 +126,11 @@
     <p class="notice"><strong>Nota: </strong>Para descargar, click derecho sobre la imagen y "Guardar imagen como..."</p>
     <button type="button" onclick="downloadCanvas()" disabled="True"><i class="fas fa-download"></i> Descargar Etiqueta con Texto</button>
 	<a class="button" id="linkLabel" href="https://www.aei.gob.es/sites/default/files/inline-images/MICIU+AEI.jpg" target="_blank"><i class="fas fa-external-link-alt"></i> Ir a Etiqueta Original (HD)</a>
+    <img id="labelIMG" style="display:none;" src="" alt="Label Preview">
 </form>
 
 
-<p>Fuente: <a href="https://www.aei.gob.es/sites/default/files/inline-files/20240924_Guia%20comunicacion%20publicidad%20ayudas_v02.pdf">web de la AEI</a>. <strong>Actualizado 9 octubre de 2024.</strong></p>
+<p>Fuente: <a href="https://www.aei.gob.es/sites/default/files/inline-files/20250331_Guia%20comunicacion%20publicidad%20ayudas_v01.pdf">web de la AEI</a>. <strong>Actualizado 14 enero de 2026 (Ref. Guía 31 Marzo 2025).</strong></p>
 <p><strong>Disclaimer:</strong> no me hago responsable de los posibles errores que pueda contener este formulario, pero siempre podéis abrir un <a href="https://github.com/pakitochus/generador_ayudas_aei/issues">issue</a> y lo intentamos solucionar.</p>
 </main>
 
@@ -179,7 +181,7 @@ function calculateAspectRatioFit(srcWidth, srcHeight, maxWidth, maxHeight) {
 function generarTexto() {
     // Obtener valores de los elementos del formulario
     var convocatoria = document.getElementById("convocatoria").value;
-    var year = document.getElementById("año").value; 
+    var year = parseInt(document.getElementById("año").value); // Parse int para comparaciones seguras
     var referencia = document.getElementById("referencia").value;
     var tipoResultado = document.getElementById("tipoResultado").value;
     var tipoAyuda = document.getElementById("tipoAyuda").value;
@@ -197,7 +199,9 @@ function generarTexto() {
     // Añadir información de financiación estándar
     textoGenerado += " MICIU/AEI/10.13039/501100011033";
     
-    // Agregar casos específicos de financiación adicional basados en la convocatoria y el año
+    // --- LÓGICA ACTUALIZADA SEGÚN GUÍA MARZO 2025 ---
+
+    // 1. FEDER "A way of making Europe" (Antiguo)
     if ((convocatoria.includes("Proyectos Retos Investigación") && (year>=2015) && (year<=2018)) || 
         (convocatoria.includes("Proyectos Excelencia") && (year>=2015) && (year<=2018)) ||
         (convocatoria.includes("Proyectos Generación de Conocimiento") && (year>=2015) && (year<=2018)) ||
@@ -209,13 +213,18 @@ function generarTexto() {
             textoGenerado += " and by ERDF A way of making Europe";
             linkLabel.href = "https://www.aei.gob.es/sites/default/files/inline-images/MICIU+FEDER+AEI.jpg";
             labelIMG.src = "https://www.aei.gob.es/sites/default/files/inline-images/MICIU+FEDER+AEI.jpg";
-    } else if ((convocatoria.includes("Proyectos Generación de Conocimiento") && (year>=2021) && (year<=2023)) ||
-            (convocatoria.includes("Proyectos Colaboración público-privada") && (year==2023)) ||
-			(convocatoria.includes("Proyectos Líneas Estratégicas") && (year==2024)) ||
-            (convocatoria.includes("Proyectos Equipamiento Científico-Técnico") && (year==2024))) {
+    
+    // 2. FEDER/EU (Nuevo - Incluye 2024 para algunos)
+    } else if ((convocatoria.includes("Proyectos Generación de Conocimiento") && (year>=2021) && (year<=2024)) ||
+            (convocatoria.includes("Proyectos Colaboración público-privada") && (year>=2023) && (year<=2024)) ||
+			(convocatoria.includes("Proyectos Líneas Estratégicas") && !convocatoria.includes("Transmisiones") && (year==2024)) || // Excluir transmisiones
+            (convocatoria.includes("Proyectos Equipamiento Científico-Técnico") && (year==2024)) ||
+            (convocatoria.includes("Proyectos Europa Excelencia") && (year==2024))) {
         textoGenerado += " and by ERDF/EU ";
         linkLabel.href = "https://www.aei.gob.es/sites/default/files/inline-images/MICIU+Cofinanciado+AEI.jpg";
-    } else if ((convocatoria.includes("Proyectos Líneas Estratégicas") && (year>=2021) && (year<=2022)) ||
+    
+    // 3. NextGenerationEU/PRTR
+    } else if ((convocatoria.includes("Proyectos Líneas Estratégicas") && !convocatoria.includes("Transmisiones") && (year>=2021) && (year<=2022)) ||
             (convocatoria.includes("Proyectos Transición Ecológica y Digital") && (year==2021)) ||
             (convocatoria.includes("Proyectos Colaboración público-privada") && (year>=2021) && (year<=2022)) ||
             (convocatoria.includes("Proyectos Programación conjunta internacional") && (year>=2020) && (year<=2021)) ||
@@ -225,28 +234,38 @@ function generarTexto() {
             (convocatoria.includes("Proyectos Europa Investigación") && (year==2020)) ||
             (convocatoria.includes("Proyectos Europa Redes y Gestores") && (year==2020)) ||
             (convocatoria.includes("Ayudas Doctorados industriales") && (year==2020)) ||
-            (convocatoria.includes("Ayudas Juan de la Cierva") && (year>=2020) && (year<=2022)) ||
+            (convocatoria.includes("Ayudas Juan de la Cierva") && (year>=2020) && (year<=2022)) || // Genérico JdC
             (convocatoria.includes("Ayudas Ramón y Cajal") && (year==2021)) ||
-            (convocatoria.includes("Ayudas Consolidacion Investigadora") && (year>=2022) && (year<=2023)) ||
+            (convocatoria.includes("Ayudas Consolidacion Investigadora") && (year>=2022) && (year<=2023)) || // Nota: 2024 es solo AEI
             (convocatoria.includes("Ayudas Torres Quevedo") && (year==2020)) ) {
         textoGenerado += " and by European Union NextGenerationEU/PRTR";
         linkLabel.href = "https://www.aei.gob.es/sites/default/files/inline-images/MICIU+NextG+PRTR+AEI.jpg";
+    
+    // 4. Co-funded by EU (Genérico o H2020/Horizon Europe)
     } else if ((convocatoria.includes("Proyectos Programación conjunta internacional") && (year>=2015) && (year<=2019)) ||
-            (convocatoria.includes("Proyectos Colaboración Internacional") && (year>=2023) && (year<=2024))) {
+            (convocatoria.includes("Proyectos Colaboración Internacional") && (year>=2023) && (year<=2025))) {
         textoGenerado += " and by the European Union";
         linkLabel.href = "https://www.aei.gob.es/sites/default/files/inline-images/MICIU+Cofinanciado+AEI.jpg";
+    
+    // 5. FSE (Antiguo)
     } else if ((convocatoria.includes("Ayudas Contratos Predoctorales") && (year>=2016) && (year<=2020)) ||
             (convocatoria.includes("Ayudas Ramón y Cajal") && (year>=2015) && (year<=2020)) ||
             (convocatoria.includes("Ayudas Promoción de empleo joven") && ((year>=2014) || (year==2018)))) {
         textoGenerado += " and by ESF Investing in your future";
         linkLabel.href = "https://www.aei.gob.es/sites/default/files/inline-images/MICIU+FSE+AEI.jpg";
-    } else if ((convocatoria.includes("Ayudas Contratos Predoctorales") && (year>=2021) && (year<=2022)) ||
-            (convocatoria.includes("Ayudas Formación de personal investigador predoctoral") && (year>=2022) && (year<=2023)) ||
-            (convocatoria.includes("Ayudas Juan de la Cierva") && (year==2023)) ||
-            (convocatoria.includes("Ayudas Ramón y Cajal") && (year>=2022) && (year<=2023)) ||
-            (convocatoria.includes("Ayudas Personal técnico de apoyo") && (year>=2021) && (year<=2023))) {
+    
+    // 6. FSE+ (Nuevo - Ampliado a 2024)
+    } else if ((convocatoria.includes("Ayudas Contratos Predoctorales") && (year>=2021) && (year<=2022)) || // Nota: Predoctorales cambia de nombre a veces
+            (convocatoria.includes("Ayudas Formación de personal investigador predoctoral") && (year>=2022) && (year<=2024)) ||
+            (convocatoria.includes("Ayudas Juan de la Cierva") && (year==2023)) || // JdC genérico en 2023
+            (convocatoria.includes("Ayudas Juan de la Cierva Incorporación") && (year>=2023) && (year<=2024)) || // Especifico JdC Inc
+            (convocatoria.includes("Ayudas Ramón y Cajal") && (year>=2022) && (year<=2024)) ||
+            (convocatoria.includes("Ayudas Personal técnico de apoyo") && (year>=2021) && (year<=2024))) {
         textoGenerado += " and by ESF+";
         linkLabel.href = "https://www.aei.gob.es/sites/default/files/inline-images/MICIU+Cofinanciado+AEI.jpg";
+    
+    // 7. Por defecto (Solo AEI/MICIU)
+    // Incluye: ATRAE, Transmisiones, Consolidación 2024, etc.
     } else {
         linkLabel.href = "https://www.aei.gob.es/sites/default/files/inline-images/MICIU+AEI.jpg";
     }
@@ -326,6 +345,8 @@ function generarTexto() {
         {
         base_image = new Image();
         base_image.src = linkLabel.href;
+        // Evita errores de CORS si la imagen viene de otro dominio, aunque para download puede seguir fallando sin proxy server
+        base_image.crossOrigin = "Anonymous"; 
 
         // var imgSize = calculateAspectRatioFit(base_image.width, base_image.height, canvas.clientWidth, canvas.clientHeight);
         // base_image.onload = function(){
