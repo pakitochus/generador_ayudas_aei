@@ -345,8 +345,6 @@ function generarTexto() {
         {
         base_image = new Image();
         base_image.src = linkLabel.href;
-        // Evita errores de CORS si la imagen viene de otro dominio, aunque para download puede seguir fallando sin proxy server
-        base_image.crossOrigin = "Anonymous"; 
 
         // var imgSize = calculateAspectRatioFit(base_image.width, base_image.height, canvas.clientWidth, canvas.clientHeight);
         // base_image.onload = function(){
