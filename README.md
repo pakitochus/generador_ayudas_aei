@@ -1,5 +1,8 @@
 # Generador de texto de publicidad para ayudas de la AEI
 
+> [!IMPORTANT] 
+> La AEI ha casi clonado esta herramienta añadiendo algunas funcionalidades y de forma oficial en su propia web, por lo que voy a archivar el repositorio, ya que no hará más falta: [https://www.aei.gob.es/ayudas-concedidas/comunicacion-publicidad-ayudas-concedidas](https://www.aei.gob.es/ayudas-concedidas/comunicacion-publicidad-ayudas-concedidas)
+
 ## Description
 
 Este proyecto proporciona un [formulario web](https://pakitochus.github.io/generador_ayudas_aei/) que genera un texto basado en la referencia de la subvención y algunos otros parámetros. El formulario incluye opciones para el año, el tipo de resultado (vídeo/publicación, etc.) y la versión del reconocimiento. El texto generado está relacionado con los programas financiados por la AEI y contiene un enlace a la **etiqueta oficial**. El formulario está diseñado para reconocer la fuente de financiación de diversos proyectos de investigación en publicaciones.
